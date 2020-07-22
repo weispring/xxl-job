@@ -56,13 +56,13 @@ public final class XxlJobDynamicScheduler {
         // init i18n
         initI18n();
 
-        // admin registry monitor run
+        // admin registry monitor run 同步注册信息至 group
         JobRegistryMonitorHelper.getInstance().start();
 
-        // admin monitor run
+        // admin monitor run 失败重试、告警
         JobFailMonitorHelper.getInstance().start();
 
-        // admin-server
+        // admin-server 处理客户端注册、移除注册请求、callBack
         initRpcProvider();
 
         logger.info(">>>>>>>>> init xxl-job admin success.");
@@ -79,7 +79,7 @@ public final class XxlJobDynamicScheduler {
         // admin monitor stop
         JobFailMonitorHelper.getInstance().toStop();
 
-        // admin-server
+        // admin-server todo
         stopRpcProvider();
     }
 
@@ -136,7 +136,7 @@ public final class XxlJobDynamicScheduler {
             return executorBiz;
         }
 
-        // set-cache
+        // set-cache 创建代理对象通过netty 调用
         executorBiz = (ExecutorBiz) new XxlRpcReferenceBean(
                 NetEnum.NETTY_HTTP,
                 Serializer.SerializeEnum.HESSIAN.getSerializer(),
