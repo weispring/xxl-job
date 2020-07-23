@@ -24,22 +24,22 @@ public class XxlJobScheduler  {
         // init i18n
         initI18n();
 
-        // admin registry monitor run
+        // admin registry monitor run 同步注册信息至group,新增时即使选择自动注册此处可以更新地址信息
         JobRegistryMonitorHelper.getInstance().start();
 
-        // admin fail-monitor run
+        // admin fail-monitor run 失败重试和告警
         JobFailMonitorHelper.getInstance().start();
 
-        // admin lose-monitor run
+        // admin lose-monitor run 处理执行地址和注册地址不匹配
         JobLosedMonitorHelper.getInstance().start();
 
-        // admin trigger pool start
+        // admin trigger pool start 设置调度线程池
         JobTriggerPoolHelper.toStart();
 
         // admin log report start
         JobLogReportHelper.getInstance().start();
 
-        // start-schedule
+        // start-schedule 定时任务开始轮询
         JobScheduleHelper.getInstance().start();
 
         logger.info(">>>>>>>>> init xxl-job admin success.");

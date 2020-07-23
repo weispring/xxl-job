@@ -10,11 +10,15 @@ public enum ExecutorRouteStrategyEnum {
 
     FIRST(I18nUtil.getString("jobconf_route_first"), new ExecutorRouteFirst()),
     LAST(I18nUtil.getString("jobconf_route_last"), new ExecutorRouteLast()),
+    //按照顺序来
     ROUND(I18nUtil.getString("jobconf_route_round"), new ExecutorRouteRound()),
     RANDOM(I18nUtil.getString("jobconf_route_random"), new ExecutorRouteRandom()),
     CONSISTENT_HASH(I18nUtil.getString("jobconf_route_consistenthash"), new ExecutorRouteConsistentHash()),
+    //使用频率最低的
     LEAST_FREQUENTLY_USED(I18nUtil.getString("jobconf_route_lfu"), new ExecutorRouteLFU()),
+    //最近最久未使用
     LEAST_RECENTLY_USED(I18nUtil.getString("jobconf_route_lru"), new ExecutorRouteLRU()),
+    //心跳检测
     FAILOVER(I18nUtil.getString("jobconf_route_failover"), new ExecutorRouteFailover()),
     BUSYOVER(I18nUtil.getString("jobconf_route_busyover"), new ExecutorRouteBusyover()),
     SHARDING_BROADCAST(I18nUtil.getString("jobconf_route_shard"), null);

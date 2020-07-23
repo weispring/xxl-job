@@ -38,7 +38,7 @@ public class GlueFactory {
 
 	/**
 	 * load new instance, prototype
-	 *
+	 * MarkI 实例化bean 装载依赖的bean
 	 * @param codeSource
 	 * @return
 	 * @throws Exception

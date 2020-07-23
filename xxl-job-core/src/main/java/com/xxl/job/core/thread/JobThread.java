@@ -136,7 +136,7 @@ public class JobThread extends Thread{
 							});
 							futureThread = new Thread(futureTask);
 							futureThread.start();
-
+							//超时处理
 							executeResult = futureTask.get(triggerParam.getExecutorTimeout(), TimeUnit.SECONDS);
 						} catch (TimeoutException e) {
 
@@ -190,6 +190,7 @@ public class JobThread extends Thread{
                     } else {
                         // is killed
                         ReturnT<String> stopResult = new ReturnT<String>(ReturnT.FAIL_CODE, stopReason + " [job running, killed]");
+                        //执行完毕通过http回调admin
                         TriggerCallbackThread.pushCallBack(new HandleCallbackParam(triggerParam.getLogId(), triggerParam.getLogDateTime(), stopResult));
                     }
                 }
