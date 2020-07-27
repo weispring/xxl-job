@@ -3,7 +3,7 @@
 
 ### 1.客户端
 #### 1.注册job对应的handMethod
-通过从spring容器中查找带有注解的方法和bean，进行注册jobName和MethodHandler
+通过从spring容器中查找带有注解的方法和bean，进行注册jobName和MethodHandler,对应的业务方法返回值要求(ReturnT<String>)，因为后面通过反射执行时会强转类型。
 #### 2.固定频率的发起http请求(心跳)，向admin注册地址。
 #### 3.调用处理过程。
 当任务调用从端调用过来时，通过jobId获取对应的线程，若没有则注册相应的线程进入map。然后将请求放入thread对应的队列中，后续获取队列任务去执行，执行完毕http回调通知结果。执行任务过程中，打印日志并保存了日志文件，admin端可以rpc获取。
