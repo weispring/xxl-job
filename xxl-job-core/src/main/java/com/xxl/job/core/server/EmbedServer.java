@@ -64,6 +64,7 @@ public class EmbedServer {
 
 
                 try {
+                    // netty server
                     // start server
                     ServerBootstrap bootstrap = new ServerBootstrap();
                     bootstrap.group(bossGroup, workerGroup)
