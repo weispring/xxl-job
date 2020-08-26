@@ -64,7 +64,8 @@ public class EmbedServer {
 
 
                 try {
-                    // netty server
+                    //todo marki netty server admin 采用http协议，因此client需要解析此协议
+                    //io.netty.handler.codec.http.HttpServerCodec.HttpServerRequestDecoder()
                     // start server
                     ServerBootstrap bootstrap = new ServerBootstrap();
                     bootstrap.group(bossGroup, workerGroup)
